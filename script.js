@@ -62,7 +62,7 @@ function moveSnake() {
         head.col < 0 ||
         head.col >= 40
     ) {
-        // alert('Game over!');
+        alert('Game over!');
         // Reset the game
         snake = [{ row: 20, col: 1 }];
         food = { row: 10, col: 10 };
