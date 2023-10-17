@@ -7,22 +7,22 @@ let food = { row: 10, col: 10 };
 let direction = 'right';
 let score = 0;
 
-function createPixel(row, col, className) {
+function createPixel(row, col, className,count) {
     const pixel = document.createElement('div');
     pixel.className = className;
-    pixel.id = `pixel${row}_${col}`;
+    pixel.id = `pixel${count}`;
     pixel.style.gridRowStart = row;
     pixel.style.gridColumnStart = col;
     gameContainer.appendChild(pixel);
 }
 
-function updateGame() {
+function updateGame(count) {
     // Clear the game container
     gameContainer.innerHTML = '';
 
     // Update and draw the snake
     snake.forEach(segment => {
-        createPixel(segment.row, segment.col, 'snakeBodyPixel');
+        createPixel(segment.row, segment.col, 'snakeBodyPixel',count);
     });
 
     // Draw the food
@@ -62,7 +62,7 @@ function moveSnake() {
         head.col < 0 ||
         head.col >= 40
     ) {
-        alert('Game over!');
+        // alert('Game over!');
         // Reset the game
         snake = [{ row: 20, col: 1 }];
         food = { row: 10, col: 10 };
@@ -85,7 +85,9 @@ document.addEventListener('keydown', function (event) {
 });
 
 // Game loop
+let count=1;
 setInterval(() => {
     moveSnake();
-    updateGame();
+    updateGame(count);
+	count++;
 }, 100);
