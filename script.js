@@ -6,9 +6,9 @@ let snake = [{ row: 20, col: 1 }];
 let food = { row: 10, col: 10 };
 let direction = 'right';
 let score = 0;
- const pixel = document.createElement('div');
-    pixel.className = "snakeBodyPixel"
+
 function createPixel(row, col, className,count) {
+    const pixel = document.createElement('div');
     pixel.className = className;
     pixel.id = `pixel${count}`;
     pixel.style.gridRowStart = row;
